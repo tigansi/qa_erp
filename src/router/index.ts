@@ -1,16 +1,22 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import Home from '../views/Home.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/homeDashboardTic'
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: Home
+    path: '/homeDashboardTic',
+    name: 'HomeDashboardTic',
+    component: () => import('@/views/tic/HomeDashboardTic.vue'),
+    children:[
+      {
+        path:'CadastroVersaoErp',
+        name:'cadastroVersaoErp',
+        component:() => import('@/views/tic/dashboard/CadastroVersaoErp.vue')
+      }
+    ]
   }
 ]
 
